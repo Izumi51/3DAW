@@ -1,0 +1,3 @@
+nome;sigla;carga
+ fundamentos;FAC;80
+organizacao;ORG;80
