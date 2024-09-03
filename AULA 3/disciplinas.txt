@@ -1,3 +1,4 @@
-nome;sigla;carga
- fundamentos;FAC;80
-organizacao;ORG;80
+;;
+fundamentos;FAC;80
+;;
+fundamentos;ias;80

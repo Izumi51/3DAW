@@ -1,0 +1,1 @@
+explode(";", $linha); //explode separa uma string em posicoes de um array separando por determinado delimitador

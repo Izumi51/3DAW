@@ -1,0 +1,14 @@
+Nome;Sigla;Carga
+fundamentos;FAC;80
+matematica;MAT;60
+linguagem;LIN;40
+programacao;PRO;100
+historia;HIS;50
+geografia;GEO;45
+ciências;CIE;70
+quimica;QUI;55
+fisica;FIS;65
+literatura;LIT;75
+filosofia;FIL;60
+sociologia;SOC;50
+educacao_fisica;EFI;70
