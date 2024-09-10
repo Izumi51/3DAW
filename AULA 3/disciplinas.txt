@@ -2,3 +2,5 @@
 fundamentos;FAC;80
 ;;
 fundamentos;ias;80
+analise;FAC;80
+analise;FAC;80
