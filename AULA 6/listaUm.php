@@ -20,6 +20,7 @@
 
         header{
             padding: 10px;
+            margin-bottom: 50px;
         }
 
         ul{
@@ -38,13 +39,14 @@
             width: 150px;
             height: 30px;
             border: 2px solid black;
+            border-radius: 10px;
+            background-color: lightblue;
         }
-
+            
         a{
             font-size: 1.2em;
             text-decoration: none;
-            background-color: white;
-            color: black;    
+            color: black;
         }
 
         table, th, td {
@@ -68,32 +70,36 @@
     </header>
     <main>
         <form action="listaUm.php" method="POST">
-                Nome: <input type="text" name="nome">
-                <br><br>
-                Sigla: <input type="text" name="sigla">
-                <br><br>
-                Carga Horaria: <input type="text" name="carga">
-                <br><br>
-                <input type="submit" value="Listar">
+            Nome: <input type="text" name="nome" required>
+            <br><br>
+            CPF: <input type="text" name="cpf" pattern="\d{3}\.\d{3}\.\d{3}-\d{2}" placeholder="nnn.nnn.nnn-nn" required>
+            <br><br>
+            Matrícula: <input type="text" name="matri" required>
+            <br><br>
+            Data de Nascimento: <input type="text" name="nasc" pattern="\d{2}\/\d{2}\/\d{4}" placeholder="dd/mm/aaaa" required>
+            <br><br>
+            <input type="submit" value="Listar Aluno" required>
         </form>
 
         <table>
             <?php
                 if ($_SERVER["REQUEST_METHOD"] == "POST") 
                 {
-                    $arqDisc = fopen("disciplinas.txt","r") or die("erro ao criar arquivo");
+                    $arqDisc = fopen("alunos.txt","r") or die("erro ao criar arquivo");
                     
                     $linha = fgets($arqDisc);
                     $coluna = explode(";", $linha);
-                    $Nome = $_POST["nome"];
-                    $Sigla = $_POST["sigla"];
-                    $Carga = $_POST["carga"];
+                    $nome = $_POST["nome"];
+                    $cpf = $_POST["cpf"];
+                    $matri = $_POST["matri"];
+                    $nasc = $_POST["nasc"];
 
                     echo 
                     "<tr>
                     <td>" . $coluna[0] . "</td>
                     <td>" . $coluna[1] . "</td>
                     <td>" . $coluna[2] . "</td>
+                    <td>" . $coluna[3] . "</td>
                     </tr>";
                     
                     while(!feof($arqDisc))
@@ -102,13 +108,14 @@
                         
                         $coluna = explode(";", $linha); //explode separa uma string em posicoes de um array separando por determinado delimitador
                         
-                        if (($Nome == $coluna[0]) && ($Sigla == $coluna[1]) && ($Carga == $coluna[2]))
+                        if (($nome == $coluna[0]) && (strcmp($cpf, $coluna[1]) == 0) && ($matri == $coluna[2]) && (strcmp($nasc, $coluna[3]) == 0))
                         {
                             echo 
                             "<tr>
                             <td>" . $coluna[0] . "</td>
                             <td>" . $coluna[1] . "</td>
                             <td>" . $coluna[2] . "</td>
+                            <td>" . $coluna[3] . "</td>
                             </tr>";
                         }
                     }

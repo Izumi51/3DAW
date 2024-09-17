@@ -1,42 +1,27 @@
 <?php
-    if ($_SERVER["REQUEST_METHOD"] == "POST") 
-    {  
-        $arqVelho = fopen("disciplinas.txt","r") or die("erro ao criar arquivo");
-        $arqNovo = fopen("novoDisciplinas.txt","w") or die("erro ao criar arquivo");
+    $msg = "";
+    
+    if ($_SERVER['REQUEST_METHOD'] == 'POST')  {
+        $nome = $_POST["nome"];
+        $cpf = $_POST["cpf"];
+        $matri = $_POST["matri"];
+        $nasc = $_POST["nasc"];
 
-        $Nome = $_POST["nome"];
-        $Sigla = $_POST["sigla"];
-        $Carga = $_POST["carga"];
-
-        while(!feof($arqVelho))
-        {   
-            $linha = fgets($arqVelho);
-
-            $coluna = explode(";", $linha); //explode separa uma string em posicoes de um array separando por determinado delimitador
-
-            if (($Nome =! $coluna[0]) && ($Sigla =! $coluna[1]) && ($Carga =! $coluna[2]))
-            {
-                fwrite($arqNovo,$linha);
-            }
+        if (!file_exists("alunos.txt")){
+            $arqAlunos = fopen("alunos.txt","w") or die("erro ao criar arquivo");
+            $linha = "Nome;CPF;Matricula;Nascimento";
+            fwrite($arqAlunos,$linha);
+            fclose($arqAlunos);
         }
-
-        fclose($arqVelho);
-        fclose($arqNovo);
-
-        $arqVelho = fopen("disciplinas.txt","w") or die("erro ao criar arquivo");
-        $arqNovo = fopen("novoDisciplinas.txt","r") or die("erro ao criar arquivo");
-
-        while(!feof($arqNovo))
-        {   
-            $linha = fgets($arqNovo);
-            fwrite($arqVelho,$linha);
-        }
-
-        fclose($arqVelho);
-        fclose($arqNovo);
+        
+        // echo "nome: " . $nome . " sigla: " . " carga: " . $carga;
+        $arqAlunos = fopen("alunos.txt","a") or die("erro ao criar arquivo");
+        $linha = "\n" . $nome . ";" . $cpf . ";" . $matri . ";" . $nasc;
+        fwrite($arqAlunos,$linha);
+        fclose($arqAlunos);
+        $msg = "Deu tudo certo!!!";
     }
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -54,10 +39,12 @@
                 display: flex;
                 justify-content: center;
                 align-items: center; 
+                flex-direction: column;
             }
 
             header{
                 padding: 10px;
+                margin-bottom: 50px;
             }
 
             ul{
@@ -76,12 +63,13 @@
                 width: 150px;
                 height: 30px;
                 border: 2px solid black;
+                border-radius: 10px;
+                background-color: lightblue;
             }
-
+            
             a{
                 font-size: 1.2em;
                 text-decoration: none;
-                background-color: white;
                 color: black;
             }
         </style>
@@ -99,15 +87,20 @@
         </header>
 
         <main>
-            <form action="excluir.php" method="POST">
-                Nome: <input type="text" name="nome">
+            <h1>Adicionar Aluno</h1>
+
+            <form action="incluir.php" method="POST">
+                Nome: <input type="text" name="nome" required>
                 <br><br>
-                Sigla: <input type="text" name="sigla">
+                CPF: <input type="text" name="cpf" pattern="\d{3}\.\d{3}\.\d{3}-\d{2}" placeholder="nnn.nnn.nnn-nn" required>
                 <br><br>
-                Carga Horaria: <input type="text" name="carga">
+                Matrícula: <input type="text" name="matri" required>
                 <br><br>
-                <input type="submit" value="Excluir">
+                Data de Nascimento: <input type="text" name="nasc" pattern="\d{2}\/\d{2}\/\d{4}" placeholder="dd/mm/aaaa" required>
+                <br><br>
+                <input type="submit" value="Adicionar Aluno" required>
             </form>
+            <p><?php echo $msg ?></p><br>
         </main>
     </body>
 </html>
