@@ -1,8 +1,0 @@
-Nome;Sigla;Carga Horária
-Matemática;MAT;60
-Português;POR;45
-História;HIS;40
-Geografia;GEO;50
-Ciências;CIE;30
-Educação Física;EDU;35
-Artes;ART;40
