@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            html, body{
+                height: 100%;
+                padding: 0;
+                margin: 0;
+            }
+
+            header{
+                padding: 10px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            body{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            ul{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+                gap: 10px;
+                list-style: none;
+                margin: 0;
+            }
+
+            li{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 250px;
+                height: 50px;
+                border-radius: 10px;
+                border: 2px solid black;
+                background-color: white(0, 0, 0);
+            }
+            
+            a{
+                font-size: 1.4em;
+                text-decoration: none;
+                color: rgb(0, 0, 0);
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            <ul>
+                <li><a href = "usuario/incluir.php">Incluir Usuário</a></li>
+                <li><a href = "usuario/alterar.php">Alterar Usuário</a></li>
+                <li><a href = "usuario/excluir.php">Excluir Usuário</a></li>
+                <li><a href = "usuario/listaTodos.php">Listar Todos Usuários</a></li>
+                <li><a href = "usuario/listaUm.php">Listar Um Usuário</a></li>
+            </ul>
+            <ul>
+                <li><a href = "pergunta/incluir.php">Incluir Pergunta</a></li>
+                <li><a href = "pergunta/alterar.php">Alterar Pergunta</a></li>
+                <li><a href = "pergunta/excluir.php">Excluir Pergunta</a></li>
+                <li><a href = "pergunta/listaTodos.php">Listar Todas Perguntas</a></li>
+                <li><a href = "pergunta/listaUm.php">Listar Uma Pergunta</a></li>
+            </ul>
+        </header>
+    </body>
+</html>
