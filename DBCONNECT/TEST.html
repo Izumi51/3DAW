@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <script src="script.js"></script>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <header>
+            <ul>
+                <li><button onclick="menuTest(1)">Incluir Usuário</button></li>
+            </ul>
+        </header>
+
+        <main>
+            <section style="display: none;" id="1">
+                <h1>Adicionar Usuário</h1>
+
+                <form action="" method="GET">
+                    Nome: <input type="text" name="nome" id="nome" required>
+                    <br><br>
+                    Email: <input type="text" name="email" id="email" required>
+                    <br><br>
+                    senha: <input type="password" name="senha" id="senha" required>
+                    <br><br>
+                    <input type="button" value="Incluir Usuário" onclick="incluirUsuario()">
+                </form>
+            </section>
+        </main>
+    </body>
+</html>
