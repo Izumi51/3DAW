@@ -4,8 +4,8 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Document</title>
-        <script src="script.js"></script>
-        <link rel="stylesheet" href="style.css">
+        <script src="src/js/script.js"></script>
+        <link rel="stylesheet" href="src/css/style.css">
     </head>
     <body>
         <header>
@@ -29,20 +29,20 @@
             <section style="display: none;" id="1">
                 <h1>Adicionar Usuário</h1>
 
-                <form action="incluir.php" method="POST">
-                    Nome: <input type="text" name="nome" required>
+                <form action="" method="POST">
+                    Nome: <input type="text" name="nome" id= "nome" required>
                     <br><br>
-                    Email: <input type="text" name="email" required>
+                    Email: <input type="text" name="email" id= "email" required>
                     <br><br>
-                    senha: <input type="password" name="senha" required>
+                    senha: <input type="password" name="senha" id= "senha" required>
                     <br><br>
-                    <input type="button" value="Incluir Usuário" onclick="enviarAlunos()">
+                    <input type="button" value="Incluir Usuário" onclick="incluirUsuario()">
                 </form>
             </section>
             
             <section style="display: none;" id="2">
                 <h1>Alterar Usuário</h1>
-                <form action="alterar.php" method="POST">
+                <form action="" method="POST">
                     Nome: <input type="text" name="nome" required>
                     <br><br>
                     Email: <input type="text" name="email" required>
@@ -61,7 +61,7 @@
             
             <section style="display: none;" id="3">
                 <h1>Excluir Usuário</h1>
-                <form action="excluir.php" method="POST">
+                <form action="" method="POST">
                     Nome: <input type="text" name="nome" required>
                     <br><br>
                     Email: <input type="text" name="email" required>
@@ -78,7 +78,7 @@
             
             <section style="display: none;" id="5">
                 <h1>Listar um Usuário</h1>
-                <form action="listaUm.php" method="POST">
+                <form action="" method="POST">
                     Nome: <input type="text" name="nome" required>
                     <br><br>
                     Email: <input type="text" name="email" required>
@@ -92,7 +92,7 @@
             <section style="display: none;" id="6">
                 <h1>Adicionar Perguntas</h1>
 
-                <form action="incluir.php" method="POST">
+                <form action="" method="POST">
                     Pergunta: <input type="text" name="perg" required>
                     <br><br>
                     Resposta A: <input type="text" name="respA" required>
@@ -119,7 +119,7 @@
             
             <section style="display: none;" id="7">
                 <h1>Alterar Perguntas</h1>
-                <form action="alterar.php" method="POST">
+                <form action="" method="POST">
                     Pergunta: <input type="text" name="perg" required>
                         <br><br>
                         Resposta A: <input type="text" name="respA" required>
@@ -168,7 +168,7 @@
             
             <section style="display: none;" id="8">
                 <h1>Excluir Perguntas</h1>
-                <form action="excluir.php" method="POST">
+                <form action="" method="POST">
                     Pergunta: <input type="text" name="perg" required>
                     <br><br>
                     Resposta A: <input type="text" name="respA" required>
@@ -198,7 +198,7 @@
             
             <section style="display: none;" id="10">
                 <h1>Listar uma Pergunta</h1>
-                <form action="listaUm.php" method="POST">
+                <form action="" method="POST">
                     Pergunta: <input type="text" name="perg" required>
                     <br><br>
                     Resposta A: <input type="text" name="respA" required>

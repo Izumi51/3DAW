@@ -48,16 +48,21 @@ function incluirUsuario() {
     xmlhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             console.log("Chegou a resposta OK: " + this.responseText);
-            document.getElementById("msg").innerHTML = this.responseText;
         } else if (this.readyState < 4) {
                 console.log("3: " + this.readyState);
-            } else {
-                console.log("Requisicao falhou: " + this.status);
-            }
+        } else {
+            console.log("Requisicao falhou: " + this.status);
+        }
     }
 
-    xmlhttp.open("GET", "http://localhost/3DAW/DBCONNECT/conAv1.php?&senha=" + senha + "&nome=" + nome + "&email=" + email);
-    xmlhttp.send();
+    // xmlhttp.open("GET", "http://localhost/3DAW/AV1DB/src/usuario/incluirUsuario.php?&senha=" + senha + "&nome=" + nome + "&email=" + email);
+    // xmlhttp.send();
+    xmlhttp.open("POST", "http://localhost/3DAW/AV1DB/src/usuario/incluirUsuario.php");
+            xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            xmlhttp.send("senha=" + senha + "&nome=" + nome + "&email=" + email);
+            // xmlhttp.send();
+            console.log("enviei form");
+            console.log("5");
 }
 
 function alterarUsuario() {
