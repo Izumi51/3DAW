@@ -91,17 +91,41 @@
             
             <section style="display: none;" id="6">
                 <h1>Adicionar Perguntas</h1>
+                <br>
+                <form action="">
+                    Tipo de Questão:<br>  
+                    <input type="radio" id="discursiva" name="tipo">
+                    <label for="discursiva">Discursiva</label><br>
+                    <input type="radio" id="mutliEscolha" name="tipo">
+                    <label for="mutliEscolha">Mutlipla escolha</label><br>
+                    <input type="button" value="Definir Tipo" onclick="defPergTipo()">
+                </form>
 
-                <form action="" method="POST">
-                    Pergunta: <input type="text" name="perg" required>
+                <br><br>
+
+                <form id="formDis" style="display: none;" action="" method="POST">
+                    Pergunta: <input type="text" name="perg" id="pergunta" required>
                     <br><br>
-                    Resposta A: <input type="text" name="respA" required>
+                    Assunto da pergunta <input type="text" name="assunto" id="assunto" required>
                     <br><br>
-                    Resposta B: <input type="text" name="respB" required>
+                    Gabarito: <input type="text" name="gab" id="gab" required>
                     <br><br>
-                    Resposta C: <input type="text" name="respC" required>
+
+                    <input type="button" value="Adicionar Perguntas" onclick="incluirPergunta(1)">
+                </form>
+                
+                <form id="formMult" style="display: none;" action="" method="POST">
+                    Pergunta: <input type="text" name="perg" id="pergunta" required>
                     <br><br>
-                    Resposta D: <input type="text" name="respD" required>
+                    Resposta A: <input type="text" name="respA" id="respA" required>
+                    <br><br>
+                    Resposta B: <input type="text" name="respB" id="respB" required>
+                    <br><br>
+                    Resposta C: <input type="text" name="respC" id="respC" required>
+                    <br><br>
+                    Resposta D: <input type="text" name="respD" id="respD" required>
+                    <br><br>
+                    Assunto da pergunta <input type="text" name="assunto" id="assunto" required>
                     <br><br>
                     Gabarito:<br>  
                     <input type="radio" id="respA" name="gab" value="A">
@@ -112,8 +136,8 @@
                     <label for="respC">C</label><br>
                     <input type="radio" id="respD" name="gab" value="D">
                     <label for="respD">D</label><br>
-    
-                    <input type="submit" value="Adicionar Perguntas" required>
+
+                    <input type="button" value="Adicionar Perguntas" onclick="incluirPergunta(2)">
                 </form>
             </section>
             

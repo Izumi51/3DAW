@@ -20,10 +20,13 @@
             $opD = $_POST("opD");
             $gabarito = $_POST("gabarito");
 
-            $comando = "INSERT INTO `pergunta`  (`questao`, `tipo`, `assunto`) VALUES ('" . $questao . "','" . $tipo . "','" . $assunto . "')"
-            .          "INSERT INTO `resposta`  (`opA`, `opB`, `opC`, `opD`, `gabarito`) VALUES ('" . $opA . "','" . $opB . "','" . $opC . "','" . $opD . "','" . $gabrito ."')";
+            echo $merda;
 
-            // "INSERT INTO `Perguntas`(`pergunta`, `tipo`, `assunto`) VALUES ('" . $pergunta . "'," . $tipo . ",'" . $assunto ."' )";
+            $comando = "INSERT INTO `pergunta`  (`questao`, `tipo`, `assunto`) 
+                            VALUES ('" . $questao . "','" . $tipo . "','" . $assunto . "')"
+            .          "INSERT INTO `resposta`  (`opA`, `opB`, `opC`, `opD`, `gabarito`) 
+                            VALUES ('" . $opA . "','" . $opB . "','" . $opC . "','" . $opD . "','" . $gabrito ."')";
+
             $resultado = $conexao->query ($comando);
         }
     }

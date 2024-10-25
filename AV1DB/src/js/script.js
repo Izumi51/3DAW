@@ -1,43 +1,3 @@
-/*function enviarAlunos()
-{
-    let formCad = document.getElementById("formCadastro");
-    // console.log(formCad);
-    let nome = document.getElementById  ("nome").value;
-    // console.log(nome);
-    let matri = document.getElementById("matri").value;
-    // console.log(matri);
-    let email = document.getElementById("email").value;
-    // console.log(email);
-
-    let objForm2 = {"matricula": matri,"nome":nome,"email":email};
-    let objJson = JSON.stringify(formCad);
-    let objJson2 = JSON.stringify(objForm2);
-    // console.log("objForm2: " + objForm2);
-    
-    // console.log("JSON: " + objJson);
-    // console.log("JSON: " + objJson2);
-
-    let xmlhttp = new XMLHttpRequest();
-    // console.log("1");
-
-    xmlhttp.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-            console.log("Chegou a resposta OK: " + this.responseText);
-            // console.log("2");
-            document.getElementById("msg").innerHTML = this.responseText;
-        } else if (this.readyState < 4) {
-                console.log("3: " + this.readyState);
-            } else {
-                console.log("Requisicao falhou: " + this.status);
-            }
-    }
-    // console.log("4");
-    xmlhttp.open("GET", "http://localhost/3DAW/AULA%207/exer1/incluir.php?&matri=" + matri + "&nome=" + nome + "&email=" + email);
-    xmlhttp.send();
-    // console.log("enviei form");
-    // console.log("5");
-}*/
-
 function incluirUsuario() {
     let nome = document.getElementById("nome").value;
     let senha = document.getElementById("senha").value;
@@ -55,14 +15,9 @@ function incluirUsuario() {
         }
     }
 
-    // xmlhttp.open("GET", "http://localhost/3DAW/AV1DB/src/usuario/incluirUsuario.php?&senha=" + senha + "&nome=" + nome + "&email=" + email);
-    // xmlhttp.send();
     xmlhttp.open("POST", "http://localhost/3DAW/AV1DB/src/usuario/incluirUsuario.php");
-            xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-            xmlhttp.send("senha=" + senha + "&nome=" + nome + "&email=" + email);
-            // xmlhttp.send();
-            console.log("enviei form");
-            console.log("5");
+    xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xmlhttp.send("senha=" + senha + "&nome=" + nome + "&email=" + email);
 }
 
 function alterarUsuario() {
@@ -81,7 +36,75 @@ function lisUmUsuario() {
 
 }
 
-function incluirPergunta() {
+function defPergTipo() {
+    let tipo = document.getElementsByName("tipo");
+    let formDis = document.getElementById("formDis");
+    let formMult = document.getElementById("formMult");
+
+    let i = 0;
+    if (tipo[i].checked) {
+        formMult.style.display = 'none';
+        formDis.style.display = "block";
+    } else {
+        i++;
+        if (tipo[i].checked) {
+            formDis.style.display = 'none';
+            formMult.style.display = "block";
+        }
+    }
+}
+
+function incluirPergunta(tipo) {
+    if (tipo == 1)
+    {
+        
+    }
+    else {
+        let questao = document.getElementById("pergunta");
+        let opA = document.getElementById("respA");
+        let opB = document.getElementById("respB");
+        let opC = document.getElementById("respC");
+        let opD = document.getElementById("respD");
+        let assunto = document.getElementById("assunto");
+        let gabValue;
+        let gabOp = document.getElementsByName("gab");
+
+        for (let i = 0; i < gabOp.length; i++) {
+            if (gabOp[i].checked) {
+                switch (i) {
+                    case 0:
+                        gabValue = 'A';
+                        break;
+                    case 1:
+                        gabValue = 'B';
+                        break;
+                    case 2:
+                        gabValue = 'C';
+                        break;
+                    case 3:
+                        gabValue = 'D';
+                        break;
+                }
+                break;
+            }
+        }
+
+        let xmlhttp = new XMLHttpRequest();
+
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                console.log("Chegou a resposta OK: " + this.responseText);
+            } else if (this.readyState < 4) {
+                    console.log("3: " + this.readyState);
+            } else {
+                console.log("Requisicao falhou: " + this.status);
+            }
+        }
+        
+        xmlhttp.open("POST", "http://localhost/3DAW/AV1DB/src/pergunta/incluirPergunta.php");
+        xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        xmlhttp.send("questao=" + questao + "&opA=" + opA + "&opB=" + opB + "&opC=" + opC + "&opD=" + opD + "&assunto=" + assunto + "&tipo=" + tipo + "&gabarito=" + gabValue);
+    }
     
 }
 
