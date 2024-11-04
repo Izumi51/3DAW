@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="temp.js"></script>
+        <link rel="stylesheet" href="temp.css">
+        <title>3DAW online</title>
+    </head>
+
+    <body>
+        <header>
+            <ul>
+                <li><button onclick="menuTest(1)">Incluir</button></li>
+                <li><button onclick="menuTest(2)">Alterar</button></li>
+                <li><button onclick="menuTest(3)">Deletar</button></li>
+                <li><button onclick="menuTest(4)">Listar todos</button></li>
+                <li><button onclick="menuTest(5)">Listar um</button></li>
+            </ul>
+        </header>
+
+        <main>
+            <section style="display: none;" id="1">
+                <h2>Incluir</h2>
+                <form action="" method="POST">
+
+                    <label for="pergunta">Pergunta:</label><br>
+                        <input type="text" maxlength="200" name="pergunta" id="pergunta"><br>
+                    <label for="tipo">Tipo:</label><br>
+                        <input type="text" name="tipo" id="tipo"><br>
+                    <label for="assunto">Assunto:</label><br>
+                        <input type="text" name="assunto" id="assunto">
+                    <br><br>
+
+                    <div><button onclick="incluir()">Incluir</button></div>
+                </form>
+            </section>
+
+            <section style="display: none;" id="2">
+                <h2>Alterar</h2>
+                <form action="" method="POST">
+
+                    <label for="numPerg">Numero da pergunta:</label><br>
+                        <input type="number" name="numPerg" id="numPerg"><br>
+                    <br><br>
+
+                    <div><button onclick="alterar()">Alterar</button></div>
+                </form>
+            </section>
+
+            <section style="display: none;" id="3">
+                <h2>Excluir</h2>
+                <form action="" method="POST">
+
+                    <label for="numExcluir">Numero da pergunta:</label><br>
+                        <input type="number" name="numExcluir" id="numExcluir"><br>
+                    <br><br>
+
+                    <div><button onclick="excluir()">Excluir</button></div>
+                </form>
+            </section>
+
+            <section style="display: none;" id="4">
+                <h2>Listar todas</h2>
+                <form action="" method="POST">
+
+                    <button onclick="lstTodas()">Listar Todas</button>
+                </form>
+            </section>
+
+            <section style="display: none;" id="5">
+                <h2>Listar uma</h2>
+                <form action="" method="POST">
+
+                    <label for="numListar">Numero da pergunta:</label><br>
+                        <input type="number" name="numListar" id="numListar"><br>
+                    <br><br>
+
+                    <div><button onclick="lstUm()">Listar</button></div>
+                </form>
+            </section>
+        </main>
+    </body>
+</html>

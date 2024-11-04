@@ -105,7 +105,6 @@ function incluirPergunta(tipo) {
         xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         xmlhttp.send("questao=" + questao + "&opA=" + opA + "&opB=" + opB + "&opC=" + opC + "&opD=" + opD + "&assunto=" + assunto + "&tipo=" + tipo + "&gabarito=" + gabValue);
     }
-    
 }
 
 function alterarPergunta() {
