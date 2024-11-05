@@ -28,7 +28,7 @@
                         console.log("Requisicao falhou: " + this.status);
             }
             console.log("4");
-            xmlhttp.open("GET", "http://localhost/3DAW/models/ListarAlunos.php");
+            xmlhttp.open("GET", "http://localhost/3daw/ListarAlunos.php");
             xmlhttp.send();
             console.log("enviei form");
             console.log("5");
@@ -60,6 +60,8 @@
             tr.appendChild(td4);
 
             var tr_fim = document.table.getElementById("ultimalinha");
+        //      tr_fim.parentNode.insertBefore(tr,tr_fim);
+//      tr_fim.parentElement.insertBefore(tr,tr_fim);
 
       let msg = "";
 

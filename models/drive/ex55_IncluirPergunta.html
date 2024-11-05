@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Incluir Pergunta</title>
+    <script>
+        function EnviarPergunta() {
+            let objForm = document.getElementById("formPergunta");
+            console.log("objForm: " + objForm.innerHTML);
+            let assunto = document.getElementById("assunto").value;
+            let pergunta = document.getElementById("pergunta").value;
+            let tipo = document.getElementById("tipo").value;
+            console.log(" pergunta: " + pergunta + " tipo: " + tipo + "assunto: " + assunto );
+            //let objForm2 = {"id": id,"pergunta":pergunta,"tipo":tipo};
+            let objJson = JSON.stringify(objForm);
+         //   console.log("objForm2: " + objForm2);
+            console.log("JSON: " + objJson);
+
+            let xmlhttp = new XMLHttpRequest();
+            console.log("1");
+            xmlhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    console.log("Chegou a resposta OK: " + this.responseText);
+                    console.log("2");
+                    document.getElementById("msg").innerHTML = this.responseText;
+                } else
+                if (this.readyState < 4) {
+                    console.log("3: " + this.readyState);
+                } else
+                    console.log("Requisicao falhou: " + this.status);
+            }
+            console.log("4");
+            // xmlhttp.open("GET", "http://localhost/3dawmanha2/ex52_IncluirAluno.php?id=" + id +
+            //                 "&nome=" + nome + "&email=" + email);
+            xmlhttp.open("POST", "http://localhost/3daw/ex55_IncluiPergunta.php");
+            xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            xmlhttp.send("pergunta=" + pergunta + "&tipo=" + tipo + "&assunto=" + assunto);
+            // xmlhttp.send();
+            console.log("enviei form");
+            console.log("5");
+        }
+        function ValidaForm(pId, pPergunta, ptipo) {
+            let msg = "";
+            if (pId == 0) msg = "id não preenchido. <br>";
+
+            return msg;
+        }
+    </script>
+</head>
+<body>
+<h1>Inserir Pergunta</h1>
+<br>
+<li onclick="IncluirPerguntas()">Inserir Pergunta</li>
+<li onclick="">Alterar Pergunta</li>
+<li onclick="ListarPerguntas()">Listar Todas Perguntas</li>
+<li onclick="">Listar Uma Pergunta</li>
+<li onclick="">Excluir Pergunta</li>
+<li onclick="">Detalhe de Pergunta</li>
+<br>
+<div style="display: block" id="mdForm">
+    <form action="" method=POST name="formPergunta" id="formPergunta">
+    <!-- Id: <input type=text name="id" id="id" value="" required> <br> -->
+    Pergunta: <input type=text name="pergunta" id="pergunta" value=""> <br>
+    Tipo: <input type=text name="tipo" id="tipo" value=""> <br>
+    Assunto: <input type=text name="assunto" id="assunto" value=""> <br><br><br>
+    <input type="button" value="Incluir" onclick="EnviarPergunta();">
+</form>
+</div>
+<p id="msg"></p>
+<br>
+</body>
+</html>

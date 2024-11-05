@@ -13,7 +13,7 @@
         {
             $id = $_POST["excUsua"];
 
-            $comando = "DELETE FROM `usuario` WHERE `usuario`.`id` = " . $id;
+            $comando = "DELETE FROM `usuario` WHERE `id` = " . $id;
             
             $resultado = $conexao->query($comando);
         }

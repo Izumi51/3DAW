@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Listar Uma Pergunta</title>
+<script>
+  function ListarPerguntas() {
+    let xmlhttp = new XMLHttpRequest();
+    console.log("1");
+    xmlhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+        console.log("Chegou a resposta OK: " + this.responseText);
+        console.log("2");
+        document.getElementById("msg").innerHTML = this.responseText;
+        let objReturnJSON = JSON.parse(this.responseText);
+        console.log("Resposta: " + this.responseText);
+        for ($i=0; $i<objReturnJSON.length; $i++) {
+          let $linha = objReturnJSON[$i];
+          CriarLinhaTabela(objReturnJSON[$i]);
+        }
+      } else
+      if (this.readyState < 4) {
+        console.log("3: " + this.readyState);
+      } else
+        console.log("Requisicao falhou: " + this.status);
+    }
+    console.log("4");
+    // xmlhttp.open("GET", "http://localhost/3dawmanha2/ex52_IncluirAluno.php?id=" + id +
+    //                 "&nome=" + nome + "&email=" + email);
+    xmlhttp.open("GET", "http://localhost/3dawmanha/ex55_ListarPerguntaDB.php");
+    xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xmlhttp.send();
+    // xmlhttp.send();
+    console.log("enviei request get");
+    console.log("5");
+  }
+
+  function ListarUmaPergunta(idPerg) {
+    let xmlhttp = new XMLHttpRequest();
+    console.log("1");
+    xmlhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+        console.log("Chegou a resposta OK: " + this.responseText);
+        document.getElementById("msg").innerHTML = this.responseText;
+        let objReturnJSON = JSON.parse(this.responseText);
+        console.log("Resposta: " + this.responseText);
+        console.log("pergunta: " + objReturnJSON.pergunta);
+        CriarLinhaTabela(objReturnJSON.pergunta);
+
+      } else
+      if (this.readyState < 4) {
+        console.log("3: " + this.readyState);
+      } else
+        console.log("Requisicao falhou: " + this.status);
+    }
+    console.log("4");
+    xmlhttp.open("GET", "http://localhost/3daw/ex56_ListarUmaPerguntaDB.php?idPerg=" + idPerg);
+    xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xmlhttp.send();
+    // xmlhttp.send();
+    console.log("enviei request get");
+    console.log("5");
+  }
+
+  function CriarLinhaTabela(pergunta) {
+    let tabela = document.createElement("lst");
+    let tr = document.createElement("tr");
+    let td = document.createElement("td");
+    let textNode = document.createTextNode(pergunta);
+    // tr.innerHTML = '<td>' + objReturnJSON + '</td>'
+    td.appendChild(textNode);
+    tr.appendChild(td);
+    let tr_fim = document.getElementById("ultimaLinha");
+    tr_fim.parentNode.insertBefore(tr,tr_fim);
+
+    let msg = "";
+
+    return msg;
+  }
+</script>
+</head>
+<body>
+<h1>Listar uma Pergunta</h1>
+<br>
+<ul>
+<li onclick="">Inserir Pergunta</li>
+<li onclick="">Alterar Pergunta</li>
+<li onclick="ListarPerguntas()">Listar Todas Perguntas</li>
+<li onclick="ListarUmaPergunta(1)">Listar Uma Pergunta</li>
+<li onclick="">Excluir Pergunta</li>
+<li onclick="">Detalhe de Pergunta</li>
+</ul>
+<br>
+<table id="lst">
+<tr id="ultimaLinha">
+  <td colspan="4"></td>
+</tr>
+</table>
+<p id="msg"></p>
+<br>
+</body>
+</html>

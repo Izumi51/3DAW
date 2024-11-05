@@ -1,4 +1,15 @@
 <?php
+    // $servidor = "localhost";
+    // $username = "root";
+    // $senha = "";
+    // $database = "faeterj3dawmanha";
+    // $conn = new mysqli($servidor,$username,$senha,$database);
+    // if ($conn->connect_error) {
+    //    die("Conexao falhou, avise o administrador do sistema");
+    // }
+    // $comandoSQL = "SELECT * from `Perguntas`";
+    // $resultado = $conn->query($comandoSQL);
+
     $arqDisc = fopen("alunos.txt","r") or die("erro ao abrir arquivo");
     $arrAluno[] = array();
         $i = 0;
