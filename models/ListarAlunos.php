@@ -32,6 +32,5 @@
 
     // echo $retorno;
     $retorno=json_encode($strJson);
-  //  echo $strJson;
     echo $retorno;
 ?>

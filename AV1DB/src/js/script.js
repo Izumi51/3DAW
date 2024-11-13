@@ -125,47 +125,9 @@ function lisUmPergunta() {
 
 function menuTest (type)
 {
-    switch (type) {
-        case 1:
-            displayReset();
-            document.getElementById("1").style.display = "block";
-            break;
-        case 2:
-            displayReset();
-            document.getElementById("2").style.display = "block";
-            break;
-        case 3:
-            displayReset();
-            document.getElementById("3").style.display = "block";
-            break;
-        case 4:
-            displayReset();
-            document.getElementById("4").style.display = "block";
-            break;
-        case 5:
-            displayReset();
-            document.getElementById("5").style.display = "block";
-            break;
-        case 6:
-            displayReset();
-            document.getElementById("6").style.display = "block";
-            break;
-        case 7:
-            displayReset();
-            document.getElementById("7").style.display = "block";
-            break;
-        case 8:
-            displayReset();
-            document.getElementById("8").style.display = "block";
-            break;
-        case 9:
-            displayReset();
-            document.getElementById("9").style.display = "block";
-            break;        
-        case 10:
-            displayReset();
-            document.getElementById("10").style.display = "block";
-            break;
+    function menuTest (type) {
+        displayReset();
+        document.getElementById(type).style.display = "block";        
     }
 }
 
