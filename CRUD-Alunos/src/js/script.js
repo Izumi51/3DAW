@@ -59,12 +59,85 @@ function excluir() {
 }
 
 function listarUm() {
+    let matricula = document.getElementById("matriLst").value;
 
+    let xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function() {
+        if (this.readyState === 4) {
+            if (this.status === 200) {
+                document.getElementById("tabela-aluno").innerHTML = "";
+                const objReturnJSON = JSON.parse(this.responseText);
+                CriarLinhaTabela(objReturnJSON, "tabela-aluno");
+            } else {
+                console.log("Requisição falhou: " + this.status);
+            }
+        }
+    };
+
+    xmlhttp.open("POST", "http://localhost/3DAW/CRUD-Alunos/src/php/listarUm.php");
+    xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xmlhttp.send("matricula=" + matricula); 
 }
 
 function listarTodos() {
-    
+    let xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function() {
+        if (this.readyState === 4) {
+            if (this.status === 200) {
+                document.getElementById("tabela-alunos").innerHTML = "";
+                const objReturnJSON = JSON.parse(this.responseText);
+                CriarLinhaTabela(objReturnJSON, "tabela-alunos");
+            } else {
+                console.log("Requisição falhou: " + this.status);
+            }
+        }
+    };
+
+    xmlhttp.open("POST", "http://localhost/3DAW/CRUD-Alunos/src/php/listarTodos.php");
+    xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xmlhttp.send();
 }
+
+function CriarLinhaTabela(data, tableId) {
+    const table = document.getElementById(tableId);
+
+    if (Array.isArray(data)) {
+        data.forEach(aluno => {
+            const tr = document.createElement("tr");
+
+            const tdNome = document.createElement("td");
+            tdNome.textContent = aluno.nome;
+            tr.appendChild(tdNome);
+
+            const tdMatricula = document.createElement("td");
+            tdMatricula.textContent = aluno.matricula;
+            tr.appendChild(tdMatricula);
+
+            const tdEmail = document.createElement("td");
+            tdEmail.textContent = aluno.email;
+            tr.appendChild(tdEmail);
+
+            table.appendChild(tr);
+        });
+    } else {
+        const tr = document.createElement("tr");
+
+        const tdNome = document.createElement("td");
+        tdNome.textContent = data.nome;
+        tr.appendChild(tdNome);
+
+        const tdMatricula = document.createElement("td");
+        tdMatricula.textContent = data.matricula;
+        tr.appendChild(tdMatricula);
+
+        const tdEmail = document.createElement("td");
+        tdEmail.textContent = data.email;
+        tr.appendChild(tdEmail);
+
+        table.appendChild(tr);
+    }
+}
+
 
 function menuTest (type) {
     displayReset();
@@ -79,92 +152,3 @@ function displayReset() {
         }   
     }
 }
-
-
-    function BuscarPergunta(pId) {
-            let xmlhttp = new XMLHttpRequest();
-            console.log("1");
-            xmlhttp.onreadystatechange = function() {
-                if (this.readyState == 4 && this.status == 200) {
-                    document.getElementById("msg").innerHTML = this.responseText;                    
-                    let objReturnJSON = JSON.parse(this.responseText);
-                //    let objReturnJSON = JSON.parse(this.responseText);
-                    document.getElementById("id").value = objReturnJSON.id;
-                    document.getElementById("pergunta").value = objReturnJSON.pergunta;
-                    document.getElementById("tipo").value = objReturnJSON.tipo;
-                    document.getElementById("mdForm").style.display = "block";
-                } else
-                if (this.readyState < 4) {
-                    console.log("3: " + this.readyState);
-                } else
-                    console.log("Requisicao falhou: " + this.status);
-            }
-            console.log("4");
-            xmlhttp.open("GET", "http://localhost/3dawmanha/ex55_ListarPerguntaDB.php?id=" + pId);
-            xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-            xmlhttp.send();
-    }
-    function ListarPerguntas() {
-      let xmlhttp = new XMLHttpRequest();
-      console.log("1");
-      xmlhttp.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-          console.log("Chegou a resposta OK: " + this.responseText);
-          console.log("2");
-          document.getElementById("msg").innerHTML = this.responseText;
-          let objReturnJSON = JSON.parse(this.responseText);
-          console.log("Resposta: " + this.responseText);
-          for ($i=0; $i<objReturnJSON.length; $i++) {
-            let $linha = objReturnJSON[$i];
-            CriarLinhaTabela(objReturnJSON[$i]);
-          }
-        } else
-        if (this.readyState < 4) {
-          console.log("3: " + this.readyState);
-        } else
-          console.log("Requisicao falhou: " + this.status);
-      }
-      console.log("4");
-      // xmlhttp.open("GET", "http://localhost/3dawmanha2/ex52_IncluirAluno.php?id=" + id +
-      //                 "&nome=" + nome + "&email=" + email);
-      xmlhttp.open("GET", "http://localhost/3dawmanha/ex55_ListarPerguntaDB.php");
-      xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-      xmlhttp.send();
-      // xmlhttp.send();
-      console.log("enviei request get");
-      console.log("5");
-    }
-    
-    function CriarLinhaTabela(pobjReturnJSON) {
-      let tr = document.createElement("tr");
-      let td = document.createElement("td");
-      let textNode = document.createTextNode(pobjReturnJSON.pergunta);
-      td.appendChild(textNode);
-      tr.appendChild(td);
-
-      let td2 = document.createElement("td"); // cria o element td
-      textnode = document.createTextNode(pobjReturnJSON.tipo);
-      td2.appendChild(textnode); // adiciona o texto na td criada
-      tr.appendChild(td2); // adiciona a td na tr
-
-      let td3 = document.createElement("td"); // cria o element td
-      textnode = document.createTextNode(pobjReturnJSON.id);
-      td2.appendChild(textnode); // adiciona o texto na td criada
-      tr.appendChild(td3); // adiciona a td na tr
-
-      let td4 = document.createElement("td"); // cria o element td
-      let tagP = document.createElement("span", "onclick");
-      let textnode1 = "buscarPergunta('" + pobjReturnJSON.id + "')";
-      tagP.setAttribute("onclick",textnode1);
-      textnode = document.createTextNode("Alterar");
-      tagP.appendChild(textnode);
-      tr.appendChild(td4);
-
-      var tr_fim = document.getElementById("ultimalinha");
-//      tr_fim.parentNode.insertBefore(tr,tr_fim);
-//      tr_fim.parentElement.insertBefore(tr,tr_fim);
-
-      let msg = "";
-
-      return msg;
-    }

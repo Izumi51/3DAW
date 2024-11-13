@@ -40,11 +40,9 @@
     console.log("1");
     xmlhttp.onreadystatechange = function() {
       if (this.readyState == 4 && this.status == 200) {
-        console.log("Chegou a resposta OK: " + this.responseText);
-        document.getElementById("msg").innerHTML = this.responseText;
+        
         let objReturnJSON = JSON.parse(this.responseText);
-        console.log("Resposta: " + this.responseText);
-        console.log("pergunta: " + objReturnJSON.pergunta);
+        
         CriarLinhaTabela(objReturnJSON.pergunta);
 
       } else

@@ -19,7 +19,7 @@
             $i++;
         }
 
-        if ($resultado=true){
+        if ($resultado == true){
             $retorno=json_encode($alunos);
         } else {
             $retorno=json_encode("erro");

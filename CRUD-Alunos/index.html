@@ -30,7 +30,7 @@
                     <br><br>
                     Matricula: <input type="text" name="matri" id= "matri" required>
                     <br><br>
-                    <button onclick="incluir()">Incluir</button>
+                    <button type="button" onclick="incluir()">Incluir</button>
                 </form>
             </section>
             
@@ -41,7 +41,7 @@
                     <br><br>
                     Novo Email: <input type="text" name="novoemail" id="novoemail" required>
                     <br><br>
-                    <button onclick="alterar()">Alterar</button>
+                    <button type="button" onclick="alterar()">Alterar</button>
                 </form>
             </section>
             
@@ -50,22 +50,45 @@
                 <form action="" method="POST">
                     Matricula: <input type="text" name="matri" id= "matriExc" required>
                     <br><br>
-                    <button onclick="excluir()">Excluir</button>
+                    <button type="button" onclick="excluir()">Excluir</button>
                 </form>
             </section>
             
             <section style="display: none;" id="4">
                 <h2>Listar todas</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>Matrícula</th>
+                            <th>Email</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tabela-alunos">
+                    </tbody>
+                </table>
                 <button onclick="listarTodos()">Listar Todas</button>
             </section>
             
             <section style="display: none;" id="5">
                 <h1>Listar um Usuário</h1>
                 <form action="" method="POST">
-                    Matricula: <input type="text" name="matri" id= "matri" required>
+                    Matricula: <input type="text" name="matri" id= "matriLst" required>
                     <br><br>
-                    <button onclick="listarUm()">Listar um</button>
+                    <button type="button" onclick="listarUm()">Listar um</button>
                 </form>
+                <br>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>Matrícula</th>
+                            <th>Email</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tabela-aluno">
+                    </tbody>
+                </table>
             </section>
         </main>
     </body>
