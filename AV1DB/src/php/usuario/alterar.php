@@ -2,7 +2,7 @@
     $servidor = "localhost"; 
     $user = "root";
     $senha = "";
-    $database = "perguntas";
+    $database = "usuarioseperguntas";
 
     $conexao = new mysqli ($servidor, $user, $senha, $database);
 
@@ -11,11 +11,11 @@
     } else {   
         if ($_SERVER["REQUEST_METHOD"] == "POST") 
         {
-            $pergunta = $_POST["questao"];
-            $assunto = $_POST["assunto"];
-            $tipo = $_POST["tipo"];
-            $comando = "INSERT INTO `pergunta`  (`questao`, `tipo`, `assunto`)  VALUES ('" . $pergunta . "','" . $tipo . "','" . $assunto . "')";
+            $id = $_POST["id"];
+            $email = $_POST["email"];
+            $senha = $_POST["senha"];
 
+            $comando = "UPDATE `usuario` SET `email` = '" . $email . "', `senha` = '" . $senha . "' WHERE `id` = '" . $id . "'";
             $resultado = $conexao->query ($comando);
         }
     }
